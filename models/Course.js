@@ -1,5 +1,5 @@
 // models/Course.js
-const db = require('./db.js');
+const db = require('../config/database.js');
 
 const Course = {
     create: (courseData, callback) => {

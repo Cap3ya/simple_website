@@ -1,5 +1,5 @@
 // models/User.js
-const connection = require('./db.js');
+const connection = require('../config/database.js');
 
 const User = {
     create: (userData, callback) => {

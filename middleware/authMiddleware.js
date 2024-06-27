@@ -1,29 +1,20 @@
 require('dotenv');
 const jwt = require('jsonwebtoken');
-const secretKey = process.env.SECRET_KEY || 'DEFAULT_SECRET'; // Use a more secure key and store it in environment variables
+const SECRET_KEY = process.env.SECRET_KEY || 'DEFAULT_SECRET'; // Use a more secure key and store it in environment variables
 
-const verifyToken = (req, res, next) => {
-    const authHeader = req.headers['authorization'];
-    if (!authHeader) {
-        console.log('No token provided');
-        return res.status(403).json({ message: 'A token is required for authentication' });
-    }
-
-    const token = authHeader.split(' ')[1]; // Bearer <token>
+const authMiddleware = (req, res, next) => {
+    const token = req.headers['authorization'];
     if (!token) {
-        return res.status(403).json({ message: 'A token is required for authentication' });
+        return res.status(401).send('Access denied. No token provided.');
     }
 
     try {
-        const decoded = jwt.verify(token, secretKey);
-        console.log('Decoded token:', decoded); // Log the decoded token
-        req.userId = decoded.userId; // Assuming the payload contains the user id as 'id'
-        console.log('Set userId:', req.userId); // Log the userId set in the request
+        const decoded = jwt.verify(token.split(' ')[1], SECRET_KEY);
+        req.userId = decoded.userId;
+        next();
     } catch (err) {
-        console.log('Invalid token');
-        return res.status(401).json({ message: 'Invalid Token' });
+        res.status(400).send('Invalid token');
     }
-    return next();
 };
 
-module.exports = verifyToken;
+module.exports = authMiddleware;
