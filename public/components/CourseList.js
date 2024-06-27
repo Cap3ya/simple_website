@@ -6,6 +6,7 @@ class CourseList extends HTMLElement {
     }
 
     connectedCallback() {
+        console.log("ok")
         this.shadowRoot.innerHTML = `
             <style>
                 ul {

@@ -1,21 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="js/main.js" defer></script>
     <script src="components/Header.js" defer></script>
-    <script src="components/Footer.js" defer></script>
+    <script src="components/ArticleList.js" defer></script>
+    <script src="components/CourseList.js" defer></script>
+    <script src="components/EnrolledCoursesList.js" defer></script>
+    <script src="components/LoginForm.js" defer></script>
 </head>
+
 <body>
-    <header-component></header-component>
+    <header-component>
+        <header>
+            <h1>Simple Website</h1>
+            <nav>
+                <a class="navLinks" href="/">Home</a>
+                <a class="navLinks" href="/courses">Courses</a>
+                <a class="navLinks" href="/articles">Articles</a>
+                <a class="navLinks" id="enrolledCourses" href="/enrolledCourses">My Courses</a>
+                <a class="navLinks" id="login" href="/login">Authenticate</a>
+                <a id="logout" href="#">Logout</a>
+            </nav>
+        </header>
+    </header-component>
 
     <main>
         <h1>Welcome to Simple Website</h1>
         <p>This is the home page content.</p>
     </main>
 
-    <footer-component></footer-component>
+    <footer-component>
+        <footer>
+            <p>&copy; 2024 Simple Website. All rights reserved.</p>
+        </footer>
+    </footer-component>
 </body>
+
 </html>

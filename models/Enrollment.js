@@ -1,5 +1,5 @@
 // models/Enrollment.js
-const db = require('./db.js');
+const db = require('../config/database.js');
 
 const Enrollment = {
     create: (enrollmentData, callback) => {
