@@ -25,7 +25,22 @@ const purchaseArticle = (req, res) => {
     });
 };
 
+const getArticleById = (req, res) => {
+    const { id } = req.params;
+    db.query('SELECT * FROM articles WHERE id = ?', [id], (err, results) => {
+        if (err) {
+            console.error('Error fetching article:', err);
+            res.status(500).send('Server error');
+        } else if (results.length === 0) {
+            res.status(404).send('Article not found');
+        } else {
+            res.json(results[0]);
+        }
+    });
+};
+
 module.exports = {
     getAllArticles,
-    purchaseArticle
+    purchaseArticle,
+    getArticleById
 };

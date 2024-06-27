@@ -1,17 +1,14 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+
+    min-height: 100vh;
+
+    font-family: Arial, sans-serif;
+    flex-direction: column;
+    display: flex;
 }
 
-<<<<<<< HEAD
-main {
-    padding: 20px;
-}
-
-h1 {
-    color: #333;
-=======
 header {
     background-color: #333;
     color: #fff;
@@ -36,6 +33,7 @@ header {
 }
 
 main {
+    flex: 1;
     padding: 20px;
     h1 {
         color: #333;
@@ -47,8 +45,4 @@ footer {
     color: #fff;
     text-align: center;
     padding: 10px;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
->>>>>>> fetchPages
 }

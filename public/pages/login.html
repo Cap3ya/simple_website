@@ -1,11 +1,47 @@
-<main>
-    <h1>Login</h1>
-    <login-form>
-        <form id="login-form">
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Login</button>
-        </form>
-    </login-form>
-    <a href="/register">Pas encore de compte ?</a>
-</main>
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cours de philosophie">
+    <title>Title</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <script src="../components/Header.js" defer></script>
+    <script src="../components/LoginForm.js" defer></script>
+
+</head>
+
+<body>
+    <header-component>
+        <header>
+            <h1>Simple Website</h1>
+            <nav>
+                <a class="navLinks" href="/">Home</a>
+                <a class="navLinks" href="/courses">Courses</a>
+                <a class="navLinks" href="/articles">Articles</a>
+                <a class="navLinks" id="enrolledCourses" href="/enrolledCourses">My Courses</a>
+                <a class="navLinks" id="login" href="/login">Authenticate</a>
+                <a id="logout" href="#">Logout</a>
+            </nav>
+        </header>
+    </header-component>
+    <main>
+        <h1>Login</h1>
+        <login-form>
+            <form id="login-form">
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+        </login-form>
+        <a href="/register">Pas encore de compte ?</a>
+    </main>
+    <footer-component>
+        <footer>
+            <p>&copy; 2024 Simple Website. All rights reserved.</p>
+        </footer>
+    </footer-component>
+</body>
+
+</html>

@@ -6,7 +6,7 @@ class ArticleList extends HTMLElement {
 
     connectedCallback() {
         this.shadowRoot.innerHTML = `
-            <style>
+             <style>
                 ul {
                     list-style-type: none;
                     padding: 0;
@@ -21,6 +21,10 @@ class ArticleList extends HTMLElement {
                     padding: 5px 10px;
                     margin-top: 5px;
                 }
+                a {
+                    text-decoration: none;
+                    color: inherit;
+                }
             </style>
             <ul id="article-list"></ul>
         `;
@@ -34,10 +38,11 @@ class ArticleList extends HTMLElement {
             const articleList = this.shadowRoot.getElementById('article-list');
             articleList.innerHTML = articles.map(article => `
                 <li>
-                    <h2>${article.title}</h2>
-                    <p>${article.content}</p>
-                    <p>Price: $${article.price}</p>
-                    <button onclick="purchaseArticle(${article.id})">Buy</button>
+                    <a href="/article?id=${article.id}">
+                        <h2>${article.title}</h2>
+                        <p>${article.content}</p>
+                        <p>Price: $${article.price}</p>
+                    </a>
                 </li>
             `).join('');
         } catch (error) {
@@ -47,32 +52,3 @@ class ArticleList extends HTMLElement {
 }
 
 customElements.define('article-list', ArticleList);
-
-async function purchaseArticle(articleId) {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        alert('Please login to purchase an article.');
-        return;
-    }
-
-    try {
-        const response = await fetch('/api/purchase', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ articleId })
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            throw new Error(errorData.message || 'Purchase failed');
-        }
-
-        alert('Purchase successful');
-    } catch (error) {
-        console.error('Error purchasing article:', error);
-        alert(`Purchase failed: ${error.message}`);
-    }
-}

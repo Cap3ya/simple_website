@@ -50,6 +50,11 @@ app.get('/register', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', '/pages/register.html'));
 });
 
+app.get('/article', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', '/pages/articleDetail.html'));
+});
+
+
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
